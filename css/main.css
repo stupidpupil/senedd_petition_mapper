@@ -18,8 +18,11 @@ body, html{
 
 #petition_input{
   background-color: #aaa;
-  padding: 1.5em;
+  height:4.5em;
+  padding: 1em;
+  box-sizing: border-box;
 }
+
 
 #petition_url{
   font-size: 1.5em;
@@ -30,13 +33,34 @@ body, html{
   font-size: 1.5em;
 }
 
-#petition_outputs{
-  display: flex;
+#petition_header{
+  position: fixed;
+  height:4.5em;
+  box-sizing: border-box;
+  top:0;
+  background-color: #333;
+  color: white;
+  width: 100vw;
   opacity: 0;
+  display: block;
+  transition: opacity .25s ease-in-out;
+}
+
+#petition_header.ready{
+  visibility: visible;
+  opacity: 1
+}
+
+
+#petition_outputs{
+  opacity: 0;
+  display: flex;
+  visibility: hidden;
   transition: opacity .25s ease-in-out;
 }
 
 #petition_outputs.ready{
+  visibility: visible;
   opacity: 1
 }
 

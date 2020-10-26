@@ -104,6 +104,7 @@ petition_fetched = function(pt_json){
 
 
 
+  $("#petition_header").addClass("ready")
   $("#petition_outputs").addClass("ready")
 
 }
@@ -148,6 +149,7 @@ $(document).ready(function(evt){
 
 fetch_petition_click = function(evt){
 
+  $("#petition_header").removeClass("ready")
   $("#petition_outputs").removeClass("ready")
 
   petition_url = $("#petition_url").val()
