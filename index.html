@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+
+
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+  <div id="petition_input">
+    <input type="text" name="petition_url" id="petition_url", placeholder="https://petitions.senedd.wales/petitions/244282">
+    <button id="fetch_petition"> Fetch Petition</button>
+  </div>
+
+  <div id="petition_outputs">
+  <div>
+  <table id="constituencies_table">
+    <thead>
+      <tr>
+        <th>
+        </th>
+
+        <th>
+          Constituency
+        </th>
+
+        <th>
+          Signatures
+        </th>
+
+        <th>
+          Signatures per<br>
+          10k electors
+        </th>
+
+        <th>
+        </th>
+
+      </tr>
+
+    </thead>
+
+    <tbody></tbody>
+
+  </table>
+
+</div>
+  <div>
+
+    <svg id="map" >
+
+    </svg>
+</div>
+
+  </div>
+
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="js/lodash.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
+  <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+
+</body>
+</html>
