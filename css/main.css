@@ -35,7 +35,7 @@ body, html{
 
 #petition_header{
   position: fixed;
-  height:4.5em;
+  height:0;
   box-sizing: border-box;
   top:0;
   background-color: #333;
@@ -48,6 +48,7 @@ body, html{
 
 #petition_header.ready{
   visibility: visible;
+  height: 4.5em;
   opacity: 1
 }
 
