@@ -48,6 +48,10 @@ body, html{
   text-align: center;
 }
 
+#petition_title{
+  padding: 0.2em 3em;
+}
+
 #constituencies_table{
   margin:1em;
 }
