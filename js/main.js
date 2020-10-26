@@ -106,9 +106,11 @@ petition_fetched = function(pt_json){
 
 $(document).ready(function(evt){
 
-  d3.csv("data/2019_electors.csv").then(function(x){datasets.electors = x})
+  electors_promise = d3.csv("data/2019_electors.csv");
+  electors_promise.then(function(x){datasets.electors = x});
 
-  d3.json("data/constituency_boundaries.geojson").then(function(x){
+  boundaries_promise =  d3.json("data/constituency_boundaries.geojson");
+  boundaries_promise.then(function(x){
 
     datasets.boundaries = x.features
 
@@ -116,10 +118,15 @@ $(document).ready(function(evt){
       return turf.rewind(x, {reverse:true})
     })
 
-  datasets.boundaries = fixed_boundaries
+    datasets.boundaries = fixed_boundaries
+  });
 
-})
+  results_promise = d3.csv("data/2016_results.csv");
+  results_promise.then(function(x){datasets.results = x});
 
+  Promise.all([electors_promise, boundaries_promise, results_promise]).then(function(x){
+    $("#loading_screen").hide()
+  });
 
 
   $("#fetch_petition").click(fetch_petition_click)
