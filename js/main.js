@@ -109,7 +109,7 @@ $(document).ready(function(evt){
   electors_promise = d3.csv("data/2019_electors.csv");
   electors_promise.then(function(x){datasets.electors = x});
 
-  boundaries_promise =  d3.json("data/constituency_boundaries.geojson");
+  boundaries_promise =  d3.json("data/simple_constituency_boundaries.json");
   boundaries_promise.then(function(x){
 
     datasets.boundaries = x.features
