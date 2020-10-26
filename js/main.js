@@ -13,6 +13,9 @@ petition_fetched = function(pt_json){
 
   constituency_counts = pt_json.data.attributes.signatures_by_constituency
 
+
+  $("#petition_title").text(pt_json.data.attributes.action)
+
   _.each(constituency_counts, function(cnst){
     _.assign(cnst, _.find(datasets.electors, {Area_Code:cnst.id}))
 
@@ -51,9 +54,6 @@ petition_fetched = function(pt_json){
     _.assign(cnst, _.find(constituency_counts, {id: cnst.properties.nawc16cd}))
 
   })
-
-
-  console.log(constituency_counts)
 
   /*
     Update table
@@ -102,6 +102,10 @@ petition_fetched = function(pt_json){
     .attr('fill', function(d){return d.colour})
     .attr('stroke', function(d){return d.colour})
 
+
+
+  $("#petition_outputs").addClass("ready")
+
 }
 
 $(document).ready(function(evt){
@@ -126,13 +130,25 @@ $(document).ready(function(evt){
 
   Promise.all([electors_promise, boundaries_promise, results_promise]).then(function(x){
     $("#loading_screen").hide()
+
+    $("#fetch_petition").click(fetch_petition_click)
+
+    urlParams = new URLSearchParams(window.location.search);
+    petition_id = urlParams.get('petition');
+
+    if (petition_id) {
+      $("#petition_url").val("https://petitions.senedd.wales/petitions/" + petition_id)
+      fetch_petition_click()
+    }
+
   });
 
 
-  $("#fetch_petition").click(fetch_petition_click)
 })
 
 fetch_petition_click = function(evt){
+
+  $("#petition_outputs").removeClass("ready")
 
   petition_url = $("#petition_url").val()
 

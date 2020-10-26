@@ -32,6 +32,12 @@ body, html{
 
 #petition_outputs{
   display: flex;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}
+
+#petition_outputs.ready{
+  opacity: 1
 }
 
 #petition_outputs > div{
