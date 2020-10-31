@@ -15,6 +15,8 @@ petition_fetched = function(pt_json){
 
   $("#petition_title").text(pt_json.data.attributes.action)
 
+  document.title = pt_json.data.attributes.action + " - Senedd Petition by Constituency"
+
 
   var constituencies = datasets.electors
 
