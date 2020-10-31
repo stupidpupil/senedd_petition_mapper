@@ -93,8 +93,8 @@ body, html{
 }
 
 #map{
-  width:600px;
-  height:600px;
+  width:  480px;
+  height: 600px;
   background-color: #ccc;
   margin: 1em;
 }
