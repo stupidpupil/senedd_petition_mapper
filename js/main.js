@@ -11,28 +11,35 @@ var datasets = {}
 petition_fetched = function(pt_json){
   console.log(pt_json)
 
-  constituency_counts = pt_json.data.attributes.signatures_by_constituency
-
+  var constituency_signature_counts = pt_json.data.attributes.signatures_by_constituency
 
   $("#petition_title").text(pt_json.data.attributes.action)
 
-  _.each(constituency_counts, function(cnst){
-    _.assign(cnst, _.find(datasets.electors, {Area_Code:cnst.id}))
 
-    cnst.signatures_per_10k_electors = 10000*cnst.signature_count/cnst.Data
+  var constituencies = datasets.electors
+
+  _.each(constituencies, function(cnst){
+    _.assign(cnst, _.find(constituency_signature_counts, {id:cnst.ConstituencyCode}))
+
+    if(typeof(cnst.signature_count) != 'number'){
+      cnst.signature_count = 0
+    }
+
+
+    cnst.signatures_per_10k_electors = 10000*cnst.signature_count/cnst.Electors2019
 
     cnst.signatures_per_10k_electors_formatted = cnst.signatures_per_10k_electors.toFixed(0)
 
   })
 
-  constituency_counts = 
+  constituencies = 
     _.reverse(
-      _.sortBy(constituency_counts, 'signatures_per_10k_electors')
+      _.sortBy(constituencies, 'signatures_per_10k_electors')
       )
 
 
-  total_electors = d3.sum(constituency_counts, function(d){return d.Data})
-  total_signatures = d3.sum(constituency_counts, function(d){return d.signature_count})
+  total_electors = d3.sum(constituencies, function(d){return d.Electors2019})
+  total_signatures = d3.sum(constituencies, function(d){return d.signature_count})
   total_signatures_per_10k_electors = 10000*total_signatures/total_electors
 
   colourScalePer10kElectors = d3.scaleDiverging(d3.interpolateBrBG)
@@ -43,7 +50,7 @@ petition_fetched = function(pt_json){
         total_signatures_per_10k_electors+5*Math.sqrt(total_signatures_per_10k_electors)
       ])
 
-  _.each(constituency_counts, function(cnst){
+  _.each(constituencies, function(cnst){
     cnst.colour = colourScalePer10kElectors(cnst.signatures_per_10k_electors)
   })
 
@@ -51,7 +58,7 @@ petition_fetched = function(pt_json){
 
   _.each(boundaries_with_data, function(cnst){
 
-    _.assign(cnst, _.find(constituency_counts, {id: cnst.properties.nawc16cd}))
+    _.assign(cnst, _.find(constituencies, {ConstituencyCode: cnst.properties.nawc16cd}))
 
   })
 
@@ -62,7 +69,7 @@ petition_fetched = function(pt_json){
   constituency_rows = d3
     .select("#constituencies_table tbody")
     .selectAll("tr")
-    .data(constituency_counts)
+    .data(constituencies)
 
   constituency_rows
     .exit()
@@ -74,7 +81,7 @@ petition_fetched = function(pt_json){
     .merge(constituency_rows)
     .html(function(d){
       return "<td style='background-color:"+ d.colour + ";'></td>"+
-      "<td>"+d.name+"</td>"+
+      "<td>"+d.ConstituencyNameEN+"</td>"+
       "<td>"+d.signature_count+"</td>"+
       "<td>"+d.signatures_per_10k_electors_formatted+"</td>"+
       "<td style='background-color:"+ d.colour + ";'></td>"

@@ -8,5 +8,9 @@ constituency_counts %>%
     Date_Code == "2019-12-01", 
     Measure_ItemName_ENG== "Total electors", 
     Area_Code %>% str_detect("^W09")) %>% 
-  select(Area_Code, Data) %>% 
-  write_csv("2019_electors.csv")
+  select(Area_Code, Area_ItemName_ENG, Data) %>% 
+  rename(ConstituencyCode = Area_Code, ConstituencyNameEN = Area_ItemName_ENG, Electors2019 = Data) %>%
+  mutate(
+    ConstituencyNameEN = ConstituencyNameEN %>% str_replace("South Pembrokeshire", "South Pembs.")
+  ) %>%
+  write_csv("data/2019_electors.csv")
