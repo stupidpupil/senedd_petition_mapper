@@ -78,13 +78,13 @@ body, html{
 }
 
 #constituencies_table{
-  margin:1em;
+  margin:1em auto;
 }
 
 
 #constituencies_table td,
 #constituencies_table th{
-  padding: 0.3em;
+  padding: 0.3em 0.5em;
   text-align: right;
 }
 
