@@ -21,6 +21,11 @@ petition_fetched = function(pt_json){
   _.each(constituencies, function(cnst){
     _.assign(cnst, _.find(constituency_signature_counts, {id:cnst.ConstituencyCode}))
 
+
+    // The 2016 results data uses W07 codes instead of W09 for some reason
+    _.assign(cnst, _.find(datasets.results2016, {id: cnst.ConstituencyCodeW07}))
+
+
     if(typeof(cnst.signature_count) != 'number'){
       cnst.signature_count = 0
     }
@@ -31,6 +36,8 @@ petition_fetched = function(pt_json){
     cnst.signatures_per_10k_electors_formatted = cnst.signatures_per_10k_electors.toFixed(0)
 
   })
+
+  console.log(constituencies)
 
   constituencies = 
     _.reverse(
@@ -133,8 +140,8 @@ $(document).ready(function(evt){
     datasets.boundaries = fixed_boundaries
   });
 
-  results_promise = d3.csv("data/2016_results.csv");
-  results_promise.then(function(x){datasets.results = x});
+  results_promise = d3.csv("data/2016_results_2.csv");
+  results_promise.then(function(x){datasets.results2016 = x});
 
   Promise.all([electors_promise, boundaries_promise, results_promise]).then(function(x){
     $("#loading_screen").hide()
