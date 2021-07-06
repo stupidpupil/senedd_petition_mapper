@@ -8,6 +8,21 @@ var geoGenerator = d3.geoPath()
 
 var datasets = {}
 
+
+// https://stackoverflow.com/questions/48719873/how-to-get-median-and-quartiles-percentiles-of-an-array-in-javascript-or-php
+const quantile = (arr, q) => {
+    const asc = arr => arr.sort((a, b) => a - b);
+    const sorted = asc(arr);
+    const pos = (sorted.length - 1) * q;
+    const base = Math.floor(pos);
+    const rest = pos - base;
+    if (sorted[base + 1] !== undefined) {
+        return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+    } else {
+        return sorted[base];
+    }
+};
+
 petition_fetched = function(pt_json){
   console.log(pt_json)
 
@@ -51,12 +66,17 @@ petition_fetched = function(pt_json){
   total_signatures = d3.sum(constituencies, function(d){return d.signature_count})
   total_signatures_per_10k_electors = 10000*total_signatures/total_electors
 
+  var domain_max = Math.max(
+    quantile(d3.map(constituencies, function(d){return d.signatures_per_10k_electors}), 39/40),
+    total_signatures_per_10k_electors+5*Math.sqrt(total_signatures_per_10k_electors)
+    )
+
   colourScalePer10kElectors = d3.scaleDiverging(d3.interpolateBrBG)
     .domain(
       [
         total_signatures_per_10k_electors-5*Math.sqrt(total_signatures_per_10k_electors),
         total_signatures_per_10k_electors,
-        total_signatures_per_10k_electors+5*Math.sqrt(total_signatures_per_10k_electors)
+        domain_max
       ])
 
   _.each(constituencies, function(cnst){
