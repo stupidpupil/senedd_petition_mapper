@@ -202,7 +202,7 @@ petition_fetched = function(pt_json){
 
 $(document).ready(function(evt){
 
-  electors_promise = d3.csv("data/2019_electors.csv");
+  electors_promise = d3.csv("data/2019_electors.csv?220304");
   electors_promise.then(function(x){
     datasets.electors = x
 
