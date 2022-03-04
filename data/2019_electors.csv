@@ -1,41 +1,41 @@
-ConstituencyCode,Area_ItemName_ENG,Electors2019,ConstituencyCodeW07,ConstituencyNameEN
-W09000001,Ynys Môn,50734,W07000041,Ynys Môn
-W09000002,Arfon,43128,W07000057,Arfon
-W09000003,Aberconwy,45492,W07000058,Aberconwy
-W09000004,Clwyd West,58121,W07000059,Clwyd West
-W09000005,Vale of Clwyd,56381,W07000060,Vale of Clwyd
-W09000006,Delyn,55643,W07000042,Delyn
-W09000007,Alyn and Deeside,65213,W07000043,Alyn and Deeside
-W09000008,Wrexham,52775,W07000044,Wrexham
-W09000009,Clwyd South,54834,W07000062,Clwyd South
-W09000010,Dwyfor Meirionnydd,45045,W07000061,Dwyfor Meirionnydd
-W09000011,Montgomeryshire,49805,W07000063,Montgomeryshire
-W09000012,Ceredigion,54440,W07000064,Ceredigion
-W09000014,Preseli Pembrokeshire,60059,W07000065,Preseli Pembrokeshire
-W09000015,Carmarthen East and Dinefwr,58100,W07000067,Carmarthen East and Dinefwr
-W09000016,Carmarthen West and South Pembrokeshire,59966,W07000066,Carmarthen West and South Pembs.
-W09000017,Llanelli,62324,W07000045,Llanelli
-W09000018,Gower,61802,W07000046,Gower
-W09000019,Swansea West,57342,W07000047,Swansea West
-W09000020,Swansea East,59351,W07000048,Swansea East
-W09000021,Neath,56845,W07000069,Neath
-W09000022,Aberavon,51304,W07000049,Aberavon
-W09000023,Bridgend,62502,W07000073,Bridgend
-W09000025,Rhondda,50769,W07000052,Rhondda
-W09000026,Cynon Valley,51733,W07000070,Cynon Valley
-W09000029,Cardiff West,70839,W07000079,Cardiff West
-W09000031,Cardiff Central,67606,W07000050,Cardiff Central
-W09000034,Monmouth,67111,W07000054,Monmouth
-W09000035,Caerphilly,64930,W07000076,Caerphilly
-W09000036,Islwyn,56808,W07000077,Islwyn
-W09000037,Torfaen,61761,W07000053,Torfaen
-W09000038,Blaenau Gwent,50320,W07000072,Blaenau Gwent
-W09000039,Newport West,66951,W07000056,Newport West
-W09000040,Newport East,59449,W07000055,Newport East
-W09000041,Brecon and Radnorshire,55244,W07000068,Brecon and Radnorshire
-W09000042,Cardiff North,69953,W07000051,Cardiff North
-W09000043,Cardiff South and Penarth,82788,W07000080,Cardiff South and Penarth
-W09000044,Merthyr Tydfil and Rhymney,56356,W07000071,Merthyr Tydfil and Rhymney
-W09000045,Ogmore,56972,W07000074,Ogmore
-W09000046,Pontypridd,61251,W07000075,Pontypridd
-W09000047,Vale of Glamorgan,77387,W07000078,Vale of Glamorgan
+ConstituencyCode,Area_ItemName_ENG,Electors2019,ConstituencyCodeW07,ConstituencyNameEN,SeneddRegionName
+W09000001,Ynys Môn,50734,W07000041,Ynys Môn,North Wales
+W09000002,Arfon,43128,W07000057,Arfon,North Wales
+W09000003,Aberconwy,45492,W07000058,Aberconwy,North Wales
+W09000004,Clwyd West,58121,W07000059,Clwyd West,North Wales
+W09000005,Vale of Clwyd,56381,W07000060,Vale of Clwyd,North Wales
+W09000006,Delyn,55643,W07000042,Delyn,North Wales
+W09000007,Alyn and Deeside,65213,W07000043,Alyn and Deeside,North Wales
+W09000008,Wrexham,52775,W07000044,Wrexham,North Wales
+W09000009,Clwyd South,54834,W07000062,Clwyd South,North Wales
+W09000010,Dwyfor Meirionnydd,45045,W07000061,Dwyfor Meirionnydd,Mid and West Wales
+W09000011,Montgomeryshire,49805,W07000063,Montgomeryshire,Mid and West Wales
+W09000012,Ceredigion,54440,W07000064,Ceredigion,Mid and West Wales
+W09000014,Preseli Pembrokeshire,60059,W07000065,Preseli Pembrokeshire,Mid and West Wales
+W09000015,Carmarthen East and Dinefwr,58100,W07000067,Carmarthen East and Dinefwr,Mid and West Wales
+W09000016,Carmarthen West and South Pembrokeshire,59966,W07000066,Carmarthen West and South Pembs.,Mid and West Wales
+W09000017,Llanelli,62324,W07000045,Llanelli,Mid and West Wales
+W09000018,Gower,61802,W07000046,Gower,South Wales West
+W09000019,Swansea West,57342,W07000047,Swansea West,South Wales West
+W09000020,Swansea East,59351,W07000048,Swansea East,South Wales West
+W09000021,Neath,56845,W07000069,Neath,South Wales West
+W09000022,Aberavon,51304,W07000049,Aberavon,South Wales West
+W09000023,Bridgend,62502,W07000073,Bridgend,South Wales West
+W09000025,Rhondda,50769,W07000052,Rhondda,South Wales Central
+W09000026,Cynon Valley,51733,W07000070,Cynon Valley,South Wales Central
+W09000029,Cardiff West,70839,W07000079,Cardiff West,South Wales Central
+W09000031,Cardiff Central,67606,W07000050,Cardiff Central,South Wales Central
+W09000034,Monmouth,67111,W07000054,Monmouth,South Wales East
+W09000035,Caerphilly,64930,W07000076,Caerphilly,South Wales East
+W09000036,Islwyn,56808,W07000077,Islwyn,South Wales East
+W09000037,Torfaen,61761,W07000053,Torfaen,South Wales East
+W09000038,Blaenau Gwent,50320,W07000072,Blaenau Gwent,South Wales East
+W09000039,Newport West,66951,W07000056,Newport West,South Wales East
+W09000040,Newport East,59449,W07000055,Newport East,South Wales East
+W09000041,Brecon and Radnorshire,55244,W07000068,Brecon and Radnorshire,Mid and West Wales
+W09000042,Cardiff North,69953,W07000051,Cardiff North,South Wales Central
+W09000043,Cardiff South and Penarth,82788,W07000080,Cardiff South and Penarth,South Wales Central
+W09000044,Merthyr Tydfil and Rhymney,56356,W07000071,Merthyr Tydfil and Rhymney,South Wales East
+W09000045,Ogmore,56972,W07000074,Ogmore,South Wales West
+W09000046,Pontypridd,61251,W07000075,Pontypridd,South Wales Central
+W09000047,Vale of Glamorgan,77387,W07000078,Vale of Glamorgan,South Wales Central

@@ -92,6 +92,21 @@ body, html{
  background-color: #eee; 
 }
 
+
+#regions_table{
+  margin:1em auto;
+}
+
+#regions_table td,
+#regions_table th{
+  padding: 0.3em 0.5em;
+  text-align: right;
+}
+
+#regions_table tbody tr:nth-child(2n){
+ background-color: #eee; 
+}
+
 #map{
   width:  480px;
   height: 600px;

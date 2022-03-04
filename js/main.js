@@ -54,11 +54,35 @@ petition_fetched = function(pt_json){
 
   })
 
-  console.log(constituencies)
-
   constituencies = 
     _.reverse(
       _.sortBy(constituencies, 'signatures_per_10k_electors')
+      )
+
+
+  regions = _.groupBy(constituencies, x => x.SeneddRegionName)
+
+  regions = _.mapValues(regions, function(cnsts){
+    ret = {
+      signature_count: d3.sum(cnsts, x => x.signature_count),
+      Electors2019: d3.sum(cnsts, x => x.Electors2019),
+    }
+
+    ret.signatures_per_10k_electors = 10000*ret.signature_count/ret.Electors2019
+    ret.signatures_per_10k_electors_formatted = ret.signatures_per_10k_electors.toFixed(0)
+    
+    return(ret)
+  })
+
+  regions = _.map(_.toPairs(regions), function(x){
+    ret = x[1]
+    ret.SeneddRegionName = x[0]
+    return(ret)
+  })
+
+  regions = 
+    _.reverse(
+      _.sortBy(regions, 'signatures_per_10k_electors')
       )
 
 
@@ -79,9 +103,18 @@ petition_fetched = function(pt_json){
         domain_max
       ])
 
+
   _.each(constituencies, function(cnst){
+
     cnst.colour = colourScalePer10kElectors(cnst.signatures_per_10k_electors)
   })
+
+
+  _.each(regions, function(reg){
+
+    reg.colour = colourScalePer10kElectors(reg.signatures_per_10k_electors)
+  })
+
 
   boundaries_with_data = datasets.boundaries
 
@@ -92,7 +125,7 @@ petition_fetched = function(pt_json){
   })
 
   /*
-    Update table
+    Update tables
   */
 
   constituency_rows = d3
@@ -111,6 +144,28 @@ petition_fetched = function(pt_json){
     .html(function(d){
       return "<td style='background-color:"+ d.colour + ";'></td>"+
       "<td>"+d.ConstituencyNameEN+"</td>"+
+      "<td>"+d.signature_count+"</td>"+
+      "<td>"+d.signatures_per_10k_electors_formatted+"</td>"+
+      "<td style='background-color:"+ d.colour + ";'></td>"
+    })
+
+
+  region_rows = d3
+    .select("#regions_table tbody")
+    .selectAll("tr")
+    .data(regions)
+
+  region_rows
+    .exit()
+    .remove()
+
+   region_rows
+    .enter()
+    .append("tr")
+    .merge(region_rows)
+    .html(function(d){
+      return "<td style='background-color:"+ d.colour + ";'></td>"+
+      "<td>"+d.SeneddRegionName+"</td>"+
       "<td>"+d.signature_count+"</td>"+
       "<td>"+d.signatures_per_10k_electors_formatted+"</td>"+
       "<td style='background-color:"+ d.colour + ";'></td>"
@@ -148,7 +203,12 @@ petition_fetched = function(pt_json){
 $(document).ready(function(evt){
 
   electors_promise = d3.csv("data/2019_electors.csv");
-  electors_promise.then(function(x){datasets.electors = x});
+  electors_promise.then(function(x){
+    datasets.electors = x
+
+    datasets.regions = _.flatMap([... new Set(_.flatMap(x, ct => ct.SeneddRegionName))], rg => {return {SeneddRegionName:rg}})
+
+  });
 
   boundaries_promise =  d3.json("data/simple_constituency_boundaries.json");
   boundaries_promise.then(function(x){
