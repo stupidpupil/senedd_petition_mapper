@@ -1,4 +1,7 @@
+## Update
 This functionality was added to the Senedd website in Easter 2021.
+
+(This project was originally created in October 2020.)
 
 # Senedd Petition Mapper
 
